@@ -129,4 +129,3 @@ erDiagram
 
 ---
 
-This document serves as a foundational design plan for a Pokémon Card Storage Web App.
