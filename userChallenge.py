@@ -23,9 +23,31 @@ def is_board_full(board):
     return all(cell != " " for row in board for cell in row)
 
 
+def get_player_move(board, current_player):
+    while True:
+        try:
+            row, col = map(
+                int,
+                input(f"Player {current_player}, enter row col (0-2): ").split()
+            )
+            if not (0 <= row <= 2 and 0 <= col <= 2):
+                print("Invalid position. Numbers must be between 0 and 2.")
+                continue
+                
+            if board[row][col] == " ":
+                return row, col
+            else:
+                print("Position already taken. Try again.")
+        except (ValueError, IndexError):
+            print("Invalid input. Please enter two numbers 0-2 separated by space.")
+
+
+def initialize_board():
+    return [[" " for _ in range(3)] for _ in range(3)]
+
+
 def play_game():
-    # Initialize game
-    board = [[" " for _ in range(3)] for _ in range(3)]
+    board = initialize_board()
     players = ["X", "O"]
     
     print("Tic-Tac-Toe Game")
@@ -36,24 +58,8 @@ def play_game():
         current_player = players[turn % 2]
         
         # Get valid move from player
-        while True:
-            try:
-                row, col = map(
-                    int,
-                    input(f"Player {current_player}, enter row col (0-2): ").split()
-                )
-                if not (0 <= row <= 2 and 0 <= col <= 2):
-                    print("Invalid position. Numbers must be between 0 and 2.")
-                    continue
-                    
-                if board[row][col] == " ":
-                    board[row][col] = current_player
-                    break
-                else:
-                    print("Position already taken. Try again.")
-            except (ValueError, IndexError):
-                print("Invalid input. Please enter two numbers 0-2 separated by space.")
-        
+        row, col = get_player_move(board, current_player)
+        board[row][col] = current_player
         print_board(board)
         
         # Check game ending conditions
