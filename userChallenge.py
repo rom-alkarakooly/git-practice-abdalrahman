@@ -42,13 +42,17 @@ def play_game():
                     int,
                     input(f"Player {current_player}, enter row col (0-2): ").split()
                 )
+                if not (0 <= row <= 2 and 0 <= col <= 2):
+                    print("Invalid position. Numbers must be between 0 and 2.")
+                    continue
+                    
                 if board[row][col] == " ":
                     board[row][col] = current_player
                     break
                 else:
                     print("Position already taken. Try again.")
-            except:
-                print("Invalid input. Please enter numbers 0-2.")
+            except (ValueError, IndexError):
+                print("Invalid input. Please enter two numbers 0-2 separated by space.")
         
         print_board(board)
         
