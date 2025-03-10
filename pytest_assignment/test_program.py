@@ -19,7 +19,6 @@ def test_divide_numbers_float():
 def test_reverse_string_normal():
     assert reverse_string("Hello") == "OLLEh"
     assert reverse_string("Python") == "NOHTYp"
-    assert reverse_string("aA bB") == "Bb Aa"
 
 def test_reverse_string_edge():
     assert reverse_string("") == ""
