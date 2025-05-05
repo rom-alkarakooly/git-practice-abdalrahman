@@ -9,7 +9,9 @@ def add_numbers(x: int, y: int) -> int:
         x: First number
         y: Second number
     Returns:
+
         The sum of x and y
+
     """
     return x + y
 
@@ -21,4 +23,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main() 
+    main()
+    
