@@ -1,25 +1,16 @@
-name: Python Linting
-
+name: CI
+ 
 on: [push]
-
+ 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-          
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install flake8 pylint
-          
+      - name: Install flake8
+        run: pip install flake8
       - name: Run flake8
-        run: flake8 github_actions_demo/ --ignore=E,W,F
-          
-      - name: Run pylint
-        run: pylint github_actions_demo/ --exit-zero 
+        run: flake8 .
