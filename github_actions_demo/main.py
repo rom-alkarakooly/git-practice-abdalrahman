@@ -8,7 +8,6 @@ def add_numbers(x: int, y: int) -> int:
     Args:
         x: First number
         y: Second number
-
     Returns:
         The sum of x and y
     """
